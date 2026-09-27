@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#101a20">
+    <title>На связи · пробный звонок</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" type="module"></script>
+</head>
+<body>
+    <main>
+        <header>
+            <span class="brand"><span class="mark">↗</span> На связи</span>
+            <span class="badge">ПЕРВЫЙ ЗВОНОК</span>
+        </header>
+
+        <section id="login">
+            <p class="eyebrow">ПРИВАТНАЯ КОМНАТА</p>
+            <h1>Два экрана.<br>Один разговор.</h1>
+            <p class="intro">Войди под своим номером и пригласи второго участника. Для звонка оставь страницу открытой.</p>
+
+            <form id="loginForm">
+                <label>
+                    Твой участник
+                    <select id="user">
+                        <option value="a">Участник 1</option>
+                        <option value="b">Участник 2</option>
+                    </select>
+                </label>
+                <label>
+                    Код доступа
+                    <input
+                        id="code"
+                        type="password"
+                        inputmode="numeric"
+                        autocomplete="current-password"
+                        required
+                        maxlength="128"
+                        placeholder="Личный код"
+                    >
+                </label>
+                <button type="submit">Войти →</button>
+            </form>
+        </section>
+
+        <section id="room" hidden>
+            <div class="roomHeading">
+                <div>
+                    <p class="eyebrow" id="identity"></p>
+                    <h1>Рядом, даже издалека.</h1>
+                </div>
+                <button class="text" id="logout">Выйти</button>
+            </div>
+            <div class="statusline">
+                <span id="dot" class="dot"></span>
+                <span id="presence">Подключаемся…</span>
+            </div>
+
+            <div class="stage">
+                <video id="remote" autoplay playsinline></video>
+                <div id="placeholder">
+                    <span class="avatar">↗</span>
+                    <h2>Место для собеседника</h2>
+                    <p>Изображение появится после ответа</p>
+                </div>
+                <div class="self">
+                    <video id="local" autoplay muted playsinline></video>
+                    <span>Ты</span>
+                </div>
+                <span class="route" id="route">Ожидание звонка</span>
+                <button id="play" hidden>Включить звук и видео</button>
+            </div>
+
+            <div class="controls">
+                <button id="call" disabled>Позвонить</button>
+                <button id="accept" hidden>Ответить</button>
+                <button id="reject" class="danger" hidden>Отклонить</button>
+                <button id="hangup" class="danger" hidden>Завершить</button>
+                <button id="mic" class="secondary" disabled>Микрофон: вкл.</button>
+                <button id="camera" class="secondary" disabled>Камера: вкл.</button>
+            </div>
+
+            <p class="hint" id="quality"></p>
+            <div class="details">
+                <label class="toggle"><input id="relay" type="checkbox"> Только TURN</label>
+                <p>Принудительно передать медиа через наш сервер — для проверки соединения.</p>
+            </div>
+            <p class="hint">На втором телефоне войди под другим участником. Для первого теста оба экрана должны быть открыты.</p>
+            <button class="text" id="diagnostics" type="button">Скачать диагностику</button>
+        </section>
+
+        <p id="message" role="status" aria-live="polite"></p>
+        <footer>
+            <span>Android + iPhone</span>
+            <span>Тест WebRTC · без записи</span>
+        </footer>
+    </main>
+</body>
+</html>
