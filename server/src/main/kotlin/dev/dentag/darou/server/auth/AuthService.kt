@@ -47,7 +47,7 @@ class AuthService(
         val token = Base64.getUrlEncoder().withoutPadding().encodeToString(bytes)
         sessions[token] = Session(user, time + SESSION_SECONDS * 1000L)
         logger.info("event=login_succeeded")
-        return LoginResult.Granted(token)
+        return LoginResult.Granted(token = token, user = user)
     }
 
     @Synchronized

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Darou</string>
+    <string name="login_code">Код доступа</string>
+    <string name="login_error_credentials">Неверный пользователь или код доступа.</string>
+    <string name="login_error_invalid_response">Не удалось прочитать ответ сервера. Попробуйте позже.</string>
+    <string name="login_error_network">Не удалось связаться с сервером. Проверьте подключение и попробуйте снова.</string>
+    <string name="login_error_rate_limit">Слишком много попыток входа. Попробуйте позже.</string>
+    <string name="login_error_request">Сервер отклонил запрос на вход.</string>
+    <string name="login_error_server">Сервер временно недоступен. Попробуйте позже.</string>
+    <string name="login_loading">Входим…</string>
+    <string name="login_submit">Войти</string>
+    <string name="login_title">Вход в Darou</string>
+    <string name="login_user">Пользователь</string>
+    <string name="login_user_hint">В этом прототипе введи a или b.</string>
+    <string name="welcome_description">Личные видеозвонки</string>
+    <string name="welcome_status">Звонки появятся в одной из следующих версий.</string>
+</resources>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Darou</string>
+    <string name="login_code">Access code</string>
+    <string name="login_error_credentials">Incorrect user or access code.</string>
+    <string name="login_error_invalid_response">Could not read the server response. Please try again later.</string>
+    <string name="login_error_network">Could not connect to the server. Check your connection and try again.</string>
+    <string name="login_error_rate_limit">Too many sign-in attempts. Please try again later.</string>
+    <string name="login_error_request">The server rejected the sign-in request.</string>
+    <string name="login_error_server">The server is temporarily unavailable. Please try again later.</string>
+    <string name="login_loading">Signing in…</string>
+    <string name="login_submit">Sign in</string>
+    <string name="login_title">Sign in to Darou</string>
+    <string name="login_user">User</string>
+    <string name="login_user_hint">For this prototype, enter a or b.</string>
+    <string name="welcome_description">Personal video calls</string>
+    <string name="welcome_status">Calls will be available in a future version.</string>
+</resources>

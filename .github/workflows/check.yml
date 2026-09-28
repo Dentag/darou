@@ -10,7 +10,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - name: Check tracked files for credentials
@@ -24,6 +24,10 @@ jobs:
           node-version: '22'
       - name: Test and build server
         run: ./gradlew :server:test :server:installDist --console=plain
+      - name: Install Android SDK packages
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-37.0" "build-tools;36.0.0"'
+      - name: Build and lint Android app
+        run: ./gradlew :androidApp:assembleDebug :androidApp:lintDebug --console=plain
       - name: Install browser test dependencies
         run: npm ci --prefix tests/browser
       - name: Install Chromium
