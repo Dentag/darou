@@ -1,0 +1,4 @@
+DAROU_SERVER_ORIGIN = https:/$()/example.invalid
+PRODUCT_BUNDLE_IDENTIFIER = dev.dentag.darou
+
+#include? "../../.local/ios.xcconfig"

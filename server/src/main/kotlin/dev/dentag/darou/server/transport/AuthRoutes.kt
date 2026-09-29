@@ -35,7 +35,7 @@ fun Route.authRoutes(auth: AuthService, calls: CallCoordinator, origin: String) 
             LoginResult.RateLimited -> call.respond(HttpStatusCode.TooManyRequests)
             is LoginResult.Granted -> {
                 call.setSessionCookie(result.token, origin)
-                call.respondJson(buildJsonObject {})
+                call.respondJson(buildJsonObject { put("user", result.user) })
             }
         }
     }

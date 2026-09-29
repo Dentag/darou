@@ -1,15 +1,12 @@
 plugins {
-    kotlin("jvm")
     application
-}
-repositories {
-    mavenCentral()
+    kotlin("jvm")
 }
 dependencies {
+    implementation("ch.qos.logback:logback-classic:1.5.32")
     implementation("io.ktor:ktor-server-netty:3.6.0")
     implementation("io.ktor:ktor-server-websockets:3.6.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
-    implementation("ch.qos.logback:logback-classic:1.5.32")
     testImplementation(kotlin("test-junit"))
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
 }
