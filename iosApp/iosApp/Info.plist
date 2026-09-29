@@ -31,6 +31,10 @@
     <string>$(DAROU_SERVER_ORIGIN)</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
+    <key>NSCameraUsageDescription</key>
+    <string>Darou uses the camera to share your video during calls.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Darou uses the microphone so the other person can hear you during calls.</string>
     <key>UIApplicationSceneManifest</key>
     <dict>
         <key>UIApplicationSupportsMultipleScenes</key>

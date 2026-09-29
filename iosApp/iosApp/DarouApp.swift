@@ -7,7 +7,7 @@ struct DarouApp: App {
         guard let serverOrigin = Bundle.main.object(forInfoDictionaryKey: "DarouServerOrigin") as? String else {
             fatalError("DarouServerOrigin is missing from Info.plist")
         }
-        InitIosAppKt.initIosApp(serverOrigin: serverOrigin)
+        InitIosAppKt.doInitIosApp(serverOrigin: serverOrigin)
     }
 
     var body: some Scene {
