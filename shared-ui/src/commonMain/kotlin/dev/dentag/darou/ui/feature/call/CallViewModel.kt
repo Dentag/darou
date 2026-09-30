@@ -86,6 +86,7 @@ internal class CallViewModel(
             } catch (error: CancellationException) {
                 throw error
             } catch (error: Exception) {
+                error.printStackTrace()
                 _uiState.update { it.copy(error = error) }
             } finally {
                 withContext(NonCancellable) { media.stop() }
@@ -110,8 +111,11 @@ internal class CallViewModel(
             is CallEvent.Negotiate -> onNegotiate(event)
             is CallEvent.Reconnecting -> onReconnecting(event)
             is CallEvent.Ended -> onEnded(event)
-            is CallEvent.Error -> _uiState.update {
-                it.copy(isActionPending = false, error = event.exception)
+            is CallEvent.Error -> {
+                event.exception.printStackTrace()
+                _uiState.update {
+                    it.copy(isActionPending = false, error = event.exception)
+                }
             }
 
             is CallEvent.Offer, is CallEvent.Answer, is CallEvent.Ice -> media.handle(event)
@@ -172,6 +176,7 @@ internal class CallViewModel(
     }
 
     private fun onMediaFailure(config: MediaSessionConfig, error: Throwable) {
+        error.printStackTrace()
         _uiState.update {
             if (it.call.callId != config.callId) it
             else it.copy(
@@ -211,6 +216,7 @@ internal class CallViewModel(
             } catch (error: CancellationException) {
                 throw error
             } catch (error: Exception) {
+                error.printStackTrace()
                 _uiState.update { it.copy(isActionPending = false, error = error) }
             }
         }
