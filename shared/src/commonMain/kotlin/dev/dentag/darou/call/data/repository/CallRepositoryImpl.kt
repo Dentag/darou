@@ -12,7 +12,7 @@ import dev.dentag.darou.call.domain.model.CallEvent
 import dev.dentag.darou.call.domain.model.IceCandidate
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.sync.Mutex
 import kotlin.uuid.Uuid
 
@@ -24,7 +24,7 @@ internal class CallRepositoryImpl(
     private val connectionMutex = Mutex()
     private val activeSession = MutableStateFlow<SignalingSession?>(null)
 
-    override fun observeEvents(): Flow<CallEvent> = flow {
+    override fun observeEvents(): Flow<CallEvent> = channelFlow {
         check(connectionMutex.tryLock()) { "Call events already have an active collector" }
         try {
             api.withSession(instanceId) { session ->
@@ -33,7 +33,7 @@ internal class CallRepositoryImpl(
                     if (message is ServerMessageApi.ReadyApi) {
                         activeSession.value = session
                     }
-                    message.toDomain()?.let { emit(it) }
+                    message.toDomain()?.let { send(it) }
                 }
             }
         } finally {

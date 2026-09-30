@@ -42,6 +42,7 @@ internal class LoginViewModel(
                 val user = loginUseCase(state.userId, state.code)
                 _uiState.update { it.copy(authenticatedUser = user, code = "") }
             } catch (error: ApiException) {
+                error.printStackTrace()
                 _uiState.update { it.copy(error = error) }
             } finally {
                 _uiState.update { it.copy(isLoading = false) }
