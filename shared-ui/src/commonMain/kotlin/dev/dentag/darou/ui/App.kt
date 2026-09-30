@@ -3,9 +3,9 @@ package dev.dentag.darou.ui
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import dev.dentag.darou.ui.feature.call.CallRoute
 import dev.dentag.darou.ui.feature.login.LoginScreen
 import dev.dentag.darou.ui.feature.login.LoginViewModel
-import dev.dentag.darou.ui.feature.welcome.WelcomeScreen
 import dev.dentag.darou.ui.theme.DarouTheme
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -23,7 +23,7 @@ fun App() {
                 onLogin = viewModel::login,
             )
         } else {
-            WelcomeScreen()
+            CallRoute()
         }
     }
 }
